@@ -78,6 +78,11 @@ input, select, textarea {
 		box-sizing: border-box;
 	}
 
+	iframe[src*="google.com"] {
+		width: 100% !important;
+		height: 500px !important;
+	}
+
 	*, *:before, *:after {
 		box-sizing: inherit;
 	}
