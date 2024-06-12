@@ -29,18 +29,50 @@
 
 				<!-- One -->
 					<section id="one">
-						<header class="major">
-							<h3>Predicting the 2024 Women's Olympic Gymnastics Team</h3>
-						</header>
-						<p><div class='tableauPlaceholder' id='viz1718045003879' style='position: relative'><noscript><a href='#'><img alt='2024 Women&#39;s Olympic Gymnastics Team ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;WA&#47;WAG_Teams_AVE&#47;DASH&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='WAG_Teams_AVE&#47;DASH' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;WA&#47;WAG_Teams_AVE&#47;DASH&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1718045003879');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='727px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='727px';} else { vizElement.style.width='100%';vizElement.style.height='1377px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-						</p>
+						<header>
+                            <h2>MAG Olympic Team Selection</h2>
+                            <h6>MAG: Men's Artistic Gymnastics</h6>
+                        </header>
 						<ul class="actions">
-							<li><a href="WAG_Selection_Method.html" class="button">Method</a></li>
+							<li><a href="#" class="button">Learn More</a></li>
 						</ul>
 					</section>
-				<!-- Four -->
 
-                <section id="four">
+				<!-- Two -->
+					<section id="two">
+				
+<pre><code>WITH `portfolio-425519.MAG_Roster.MAG_Team_Possibilities` AS (
+    SELECT 'Fuzzy Benas' AS Name UNION ALL
+    SELECT 'Jeremy Bischoff' UNION ALL
+    SELECT 'Cameron Bock' UNION ALL
+    SELECT 'Alex Diab' UNION ALL
+    SELECT 'Asher Hong' UNION ALL
+    SELECT 'Patty Hoopes' UNION ALL
+    SELECT 'Paul Juda' UNION ALL
+    SELECT 'Brody Malone' UNION ALL
+    SELECT 'Yul Moldauer' UNION ALL
+    SELECT 'Stephen Nedoroscik' UNION ALL
+    SELECT 'Curran Phillips' UNION ALL
+    SELECT 'Frederick Richard' UNION ALL
+    SELECT 'Colt Walker' UNION ALL
+    SELECT 'Donnell Whittenburg' UNION ALL
+    SELECT 'Shane Wiskus' UNION ALL
+    SELECT 'Khoi Young' UNION ALL
+    SELECT 'Tate Costa' UNION ALL
+    SELECT 'Josh Karnes' UNION ALL
+    SELECT 'Kiran Mandava' UNION ALL
+    SELECT 'Kai Uemura'
+    )
+SELECT n1.Name, n2.Name, n3.Name, n4.Name, n5.Name
+FROM `portfolio-425519.MAG_Roster.MAG_Team_Possibilities` n1
+    JOIN `portfolio-425519.MAG_Roster.MAG_Team_Possibilities` n2 on n1.Name > n2.Name
+    JOIN `portfolio-425519.MAG_Roster.MAG_Team_Possibilities` n3 on n2.Name > n3.Name
+    JOIN `portfolio-425519.MAG_Roster.MAG_Team_Possibilities` n4 on n3.Name > n4.Name
+    JOIN `portfolio-425519.MAG_Roster.MAG_Team_Possibilities` n5 on n4.Name > n5.Name;</code></pre>
+					</section>
+				
+				<!-- Three -->
+                <section id="three">
                     <h2>Get In Touch</h2>
                     <p>I am actively looking for work, so feel free to reach out!</p>
                     <div class="row">
@@ -65,7 +97,7 @@
                                 </li>
                                 <li>
                                     <h3 class="icon solid fa-envelope"><span class="label">Email</span></h3>
-                                    <a href="nickmilhauser@gmail.com">nickmilhauser@gmail.com</a>
+                                    <a href="#">nickmilhauser@gmail.com</a>
                                 </li>
                             </ul>
                         </div>
