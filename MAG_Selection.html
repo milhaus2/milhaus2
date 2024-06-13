@@ -30,16 +30,26 @@
 				<!-- One -->
 					<section id="one">
 						<header>
-                            <h2>MAG Olympic Team Selection</h2>
-                            <h6>MAG: Men's Artistic Gymnastics</h6>
+                            <h2>Men's Artistic Gymnastics<br />
+                            Olympic Team Selection</h2>
                         </header>
 						<ul class="actions">
-							<li><a href="#" class="button">Learn More</a></li>
+							<li><a href="MAG_Olympic_Team.html" target="_blank" class="button">Project</a></li>
 						</ul>
 					</section>
 
 				<!-- Two -->
-					<section id="two">
+				<section id="two">
+					<h2>Method</h2>
+					<p>From a pool of 20 athletes competing at the Olympic Trials, find the highest scoring team of 5 gymnasts, using scores from four competitions:
+						<ul>
+							<li>2024 US Championships - Day 1 & 2</li>
+							<li>2024 Olympic Trials - Day 1 & 2</li>
+						</ul>
+					</p>
+					<p>The highest possible team score will be calculated by adding the top 3 scores on each of the 6 events, with a maximum team size of 5 gymnasts. </p>
+			
+					<p>First, I set up a <a href="https://docs.google.com/spreadsheets/d/1l_7a8MzK7tLagUCzVPRYJnwF5T2aNBHLJkukia_AmGs/edit?gid=0#gid=0">spreadsheet</a> to record all of the scores for the four competitions. Then, I created another CSV containing just the names of the athletes competing in the 2024 Olympic Trials. I uploaded the csv to BigQuery, and used SQL queries (UNION ALL and JOIN) to create a table containing the names of all Olympic Trials participants:</p>
 				
 <pre><code>WITH `portfolio-425519.MAG_Roster.MAG_Team_Possibilities` AS (
     SELECT 'Fuzzy Benas' AS Name UNION ALL
@@ -69,6 +79,15 @@ FROM `portfolio-425519.MAG_Roster.MAG_Team_Possibilities` n1
     JOIN `portfolio-425519.MAG_Roster.MAG_Team_Possibilities` n3 on n2.Name > n3.Name
     JOIN `portfolio-425519.MAG_Roster.MAG_Team_Possibilities` n4 on n3.Name > n4.Name
     JOIN `portfolio-425519.MAG_Roster.MAG_Team_Possibilities` n5 on n4.Name > n5.Name;</code></pre>
+					
+						<p>This gave me a list of all 15,504 permutations of potential Olympic teams:</p>
+						<img src="images/thumbs/MAG_SQL_2.png">	
+						<p>Next, I downloaded the results and imported them into a new tab in the spreadsheet, and used a series of Excel functions (VLOOKUP, LARGE, SUM) to calculate team scores for each of the possible Olympic team permutations, and filtered the results from highest to lowest score. </p>
+						<p><a href="https://docs.google.com/spreadsheets/d/1l_7a8MzK7tLagUCzVPRYJnwF5T2aNBHLJkukia_AmGs/edit?gid=1455512500#gid=1455512500" target="_blank">Results Here</a></p>
+						<p>Using this data, I created a separate Dashboard that allows users to select 5 gymnast names from a Data Validation drop-down, printing the potential total team score, as well as the athletes' average scores (so far) on each event.</p>
+						<p><a href="https://docs.google.com/spreadsheets/d/1l_7a8MzK7tLagUCzVPRYJnwF5T2aNBHLJkukia_AmGs/edit?gid=1234771133#gid=1234771133" target="_blank">Dashboard Here</a></p>
+						<p>I was also able to upload the dataset to Tableau, and created a Dashboard containing data for the top scoring team:</p>
+						<p><a href="https://public.tableau.com/views/MAG_Teams_Ave/Dashboard1?:language=en-US&:sid=&:display_count=n&:origin=viz_share_link" target="_blank" >Tableau Dashboard Here</a></p>
 					</section>
 				
 				
@@ -394,27 +413,28 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			</div>
 
 		<!-- Footer -->
-			<footer id="footer">
-				<div class="inner">
-					<ul class="icons">
-						<li><a href="https://www.linkedin.com/in/nick-milhauser-224646139/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-						<li><a href="https://github.com/milhaus2" class="icon brands fa-github"><span class="label">Github</span></a></li>
-						<li><a href="https://www.instagram.com/nickmilhauser/?hl=en" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="mailto:nickmilhauser@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-					</ul>
-					<ul class="copyright">
-						<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-				</div>
-			</footer>
+		<footer id="footer">
+			<div class="inner">
+				<ul class="icons">
+					<li><a href="https://www.linkedin.com/in/nick-milhauser-224646139/" target="_blank" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+					<li><a href="https://github.com/milhaus2" target="_blank" class="icon brands fa-github"><span class="label">Github</span></a></li>
+					<li><a href="https://public.tableau.com/app/profile/nick.milhauser/vizzes" target="_blank" class="icon solid fa-hashtag"><span class="label"></span></a></li>
+					<li><a href="https://www.instagram.com/nickmilhauser/?hl=en" target="_blank" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="mailto:nickmilhauser@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+				</ul>
+			</div>
+		</footer>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.poptrox.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+	<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.poptrox.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
 
 	</body>
 </html>
